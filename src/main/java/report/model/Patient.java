@@ -1,5 +1,8 @@
 package report.model;
 
+import lombok.Data;
+
+@Data
 public class Patient {
 
     private int patientId;
