@@ -2,8 +2,14 @@ package report.model;
 
 import lombok.Data;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+
 @Data
 public class Patient {
+
+    private static final String BIRTHDATE_PATTERN = "yyyy-MM-dd";
 
     private int patientId;
     private String firstName;
@@ -22,5 +28,12 @@ public class Patient {
         this.sex = sex;
         this.address = address;
         this.phone = phone;
+    }
+
+    public int getAge(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(BIRTHDATE_PATTERN);
+        LocalDate birth = LocalDate.parse(dateOfBirth, formatter);
+        LocalDate now = LocalDate.now();
+        return Period.between(birth, now).getYears();
     }
 }
