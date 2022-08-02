@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mise à jour des informations du patient</title>
+</head>
+
+<body>
+<div id="menu" th:replace="bandeau"></div>
+<h2>Mise à jour des informations pour le patient avec pour id : <span th:text="${patient.patientId}"></span></h2>
+<form method="post"  th:action="@{/view/patients/update/{id}(id=${patient.patientId})}" th:object="${patient}">
+    <div class="nom">
+        <label for="lastName">Last Name : </label>
+        <input type="text" required="true" name="lastName" id="lastName"
+               th:field="*{lastName}"/>
+        <p class="text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
+    </div>
+    <div class="prenom">
+        <label for="firstName">First Name : </label>
+        <input type="text" required="true" name="firstName" id="firstName"
+               th:field="*{firstName}"/>
+        <p class="text-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
+    </div>
+    <div class="dateNaissance">
+        <label for="dateOfBirth">Date of Birth : </label>
+        <input type="text"
+               required="true" name="dateOfBirth" id="dateOfBirth"  th:field="*{dateOfBirth}"/>
+        <p class="text-danger" th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}"></p>
+    </div>
+    <div class="sexe">
+        <label for="sex">Sex : </label>
+        <select id="sex" name="sex" th:field="*{sex}">
+            <option th:each="s : ${T(report.model.Sex).values()}"
+                    th:value="${s}"
+                    th:text="${s.abbreviation}">
+            </option>
+        </select>
+        <p class="text-danger" th:if="${#fields.hasErrors('sex')}" th:errors="*{sex}"></p>
+    </div>
+    <div class="adresse">
+        <label for="address">Addresse : </label>
+        <input type="text" name="address" id="address" th:field="*{address}"/>
+        <p class="text-danger" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></p>
+    </div>
+    <div class="telephone">
+        <label for="phone">Phone number : </label>
+        <input type="text" name="phone" id="phone" th:field="*{phone}"/>
+        <p class="text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
+    </div>
+    <div class="creation">
+        <button type="submit" class="btn btn-primary">Mise à jour des informations</button>
+    </div>
+</form>
+</body>
+</html>

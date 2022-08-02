@@ -2,6 +2,9 @@ package report.model;
 
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
@@ -12,10 +15,19 @@ public class Patient {
     private static final String BIRTHDATE_PATTERN = "yyyy-MM-dd";
 
     private int patientId;
+    @NotBlank
     private String firstName;
+
+    @NotBlank
     private String lastName;
+
+    @NotBlank
+    @Pattern(regexp = "^[0-9]{4}-(((0[13578]|(10|12))-(0[1-9]|[1-2][0-9]|3[0-1]))|(02-(0[1-9]|[1-2][0-9]))|((0[469]|11)-(0[1-9]|[1-2][0-9]|30)))$")
     private String dateOfBirth;
+
+    @NotNull
     private Sex sex;
+
     private String address;
     private String phone;
 

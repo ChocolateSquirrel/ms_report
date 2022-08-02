@@ -2,6 +2,7 @@ package report.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import report.model.Note;
 import report.model.Patient;
@@ -11,6 +12,7 @@ import report.service.ReportService;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class ReportController {
 
     private final ReportService reportService;
@@ -31,12 +33,12 @@ public class ReportController {
         return reportService.getAllNotes();
     }
 
-    @GetMapping("patients/{id}/notes")
+    @GetMapping("/patients/{id}/notes")
     public List<Note> getPatientNotes(@PathVariable String id){
         return reportService.getPatientNotes(id);
     }
 
-    @GetMapping("report/{id}")
+    @GetMapping("/report/{id}")
     public Report generateReport(@PathVariable String id){
         return reportService.generateReport(id);
     }

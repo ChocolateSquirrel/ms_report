@@ -15,7 +15,12 @@ public interface PatientProxy {
     @RequestMapping("/api/patients/{id}")
     public Patient getPatient(@PathVariable(value = "id") int patientId);
 
-    @RequestMapping("/api/patients/")
-    public Patient addPatient(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String dob, @RequestParam String sex,
-                              @RequestParam String address, @RequestParam String phone);
+    @PostMapping("/api/patients/add")
+    public Patient addPatient(@RequestBody Patient patient);
+
+    @RequestMapping("/api/patients/update/{id}")
+    public Patient updatePatientInfo(@PathVariable(value = "id") int patientId, @RequestBody Patient patient);
+
+    @RequestMapping("/api/patients/delete/{id}")
+    public Patient delete(@PathVariable(value = "id") int patientId);
 }

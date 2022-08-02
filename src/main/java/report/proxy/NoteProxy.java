@@ -1,9 +1,7 @@
 package report.proxy;
 
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import report.model.Note;
 
 import java.util.List;
@@ -14,6 +12,18 @@ public interface NoteProxy {
     @RequestMapping("/api/notes/")
     public List<Note> getAllNotes();
 
-    @GetMapping("/api/notes/{patientId}/notes/list")
+    @RequestMapping("/api/notes/{patientId}/notes/list")
     public List<Note> getPatientNotes(@PathVariable String patientId);
+
+    @RequestMapping("/api/notes/{id}")
+    public Note getNote(@PathVariable String id);
+
+    @RequestMapping("/api/notes/update/{id}")
+    public Note updateNote(@PathVariable String id, @RequestBody Note note);
+
+    @PostMapping("/api/notes/delete/{id}")
+    public Note deleteNote(@PathVariable String id);
+
+    @PostMapping("/api/notes/add")
+    public Note addNote(@RequestParam String patId, @RequestParam String recommendations);
 }

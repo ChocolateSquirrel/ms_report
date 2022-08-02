@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient information</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+</head>
+
+<body>
+<div id="menu" th:replace="bandeau"></div>
+
+<h1>Informations du patient :</h1>
+
+<div th:object="${patient}">
+    <p>First Name : <span th:text="${patient.firstName}"></span></p>
+    <p>Last Name : <span th:text="${patient.lastName}"></span></p>
+    <p>Date of birth : <span th:text="${patient.dateOfBirth}"></span></p>
+    <p>Sex : <span th:text="${patient.sex}"></span></p>
+    <p>Address : <span th:text="${patient.address} ?: 'no address'"></span></p>
+    <p>Phone number : <span th:text="${patient.phone} ?: 'no phone'"></span></p>
+</div>
+
+<div class="row" id="retour">
+    <a th:href="@{/view/}"><button class="btn btn-primary">Retour</button></a>
+</div>
+
+</body>
+</html>

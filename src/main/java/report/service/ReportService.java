@@ -5,7 +5,10 @@ import report.model.*;
 import report.proxy.NoteProxy;
 import report.proxy.PatientProxy;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
 public class ReportService {
@@ -22,6 +25,22 @@ public class ReportService {
         return patientProxy.getAllPatients();
     }
 
+    public Patient getPatient(String id) {
+        return patientProxy.getPatient(Integer.parseInt(id));
+    }
+
+    public Patient addPatient(Patient patient) {
+        return patientProxy.addPatient(patient);
+    }
+
+    public Patient updatePatient(String id, Patient patient){
+        return patientProxy.updatePatientInfo(Integer.parseInt(id), patient);
+    }
+
+    public Patient deletePatient(String id){
+        return patientProxy.delete(Integer.parseInt(id));
+    }
+
     public List<Note> getAllNotes() {
         return noteProxy.getAllNotes();
     }
@@ -30,21 +49,39 @@ public class ReportService {
         return noteProxy.getPatientNotes(patientId);
     }
 
+    public Note getNote(String noteId) { return noteProxy.getNote(noteId); }
+
+    public Note updateNote(String noteId, Note note){
+        return noteProxy.updateNote(noteId, note);
+    }
+
+    public Note addNote(String patientId, String recommendations){
+        return noteProxy.addNote(patientId, recommendations);
+    }
+
+    public Note deleteNote(String noteId){
+        return noteProxy.deleteNote(noteId);
+    }
+
     public Report generateReport(String patientId){
         Patient patient = patientProxy.getPatient(Integer.parseInt(patientId));
         List<Note> notes = noteProxy.getPatientNotes(patientId);
 
-        int nbTriggers = getNbTriggers(notes);
+        long nbTriggers = getNbTriggers(notes);
         LevelRisk level = getLevel(patient.getAge(), nbTriggers, patient.getSex());
 
-        return new Report(patient, level);
+        return new Report(patient, patient.getAge(), level);
     }
 
-    public int getNbTriggers(List<Note> notes){
-        return 3; // a voir comment faire pour récupérer fume, fumeur...
+    public long getNbTriggers(List<Note> notes){
+        String allRecommendations = String.valueOf(notes.stream().map(Note::getRecommendations)
+                .reduce((r1, r2) -> r1.concat(" ").concat(r2))).toLowerCase(Locale.ROOT);
+        return Arrays.stream(Trigger.values())
+                .filter(t -> allRecommendations.contains(t.getFrench()) || allRecommendations.contains(t.getEnglish()))
+                .count();
     }
 
-    public LevelRisk getLevel(int age, int nbTriggers, Sex sex){
+    public LevelRisk getLevel(int age, long nbTriggers, Sex sex){
         LevelRisk level = LevelRisk.NONE;
 
         if (nbTriggers == 2 && age > 30) level = LevelRisk.BORDERLINE;

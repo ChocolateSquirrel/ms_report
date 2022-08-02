@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Patient information</title>
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+</head>
+
+<body>
+<div id="menu" th:replace="bandeau"></div>
+
+<h1>Rapport du patient :</h1>
+
+<div th:object="${report}">
+  <p>First Name : <span th:text="${report.patient.firstName}"></span></p>
+  <p>Last Name : <span th:text="${report.patient.lastName}"></span></p>
+  <p>Age : <span th:text="${report.age}"></span></p>
+  <p>Level risk : <span th:text="${report.level}"></span></p>
+</div>
+
+<div class="row" id="retour">
+  <a th:href="@{/view/}"><button class="btn btn-primary">Retour</button></a>
+</div>
+
+</body>
+</html>
