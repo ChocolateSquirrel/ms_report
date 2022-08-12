@@ -1,0 +1,59 @@
+html
+{
+    height : 100%;
+}
+
+body
+{
+    height : 100%
+}
+
+#bandeau
+{
+    height : 15%;
+    position : relative;
+}
+
+#title
+{
+    height : 5%;
+    position : relative;
+    text-align : center;
+}
+
+#page
+{
+    height : 40%;
+    position : relative;
+    text-align : center;
+    margin : auto;
+}
+
+#form
+{
+    display : flex;
+    flex-direction : column;
+    height : 80%;
+    position : relative;
+    margin : auto;
+    justify-content : space-around;
+}
+
+.recommendations
+{
+    height : 75%;
+    position : relative;
+}
+
+#recommendations
+{
+    height : 100%;
+    position : relative;
+}
+
+#return
+{
+     height : 20%;
+     position : relative;
+     justify-content : space-around;
+}

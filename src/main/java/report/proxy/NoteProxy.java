@@ -18,7 +18,7 @@ public interface NoteProxy {
     @RequestMapping("/api/notes/{id}")
     public Note getNote(@PathVariable String id);
 
-    @RequestMapping("/api/notes/update/{id}")
+    @PostMapping("/api/notes/update/{id}")
     public Note updateNote(@PathVariable String id, @RequestBody Note note);
 
     @PostMapping("/api/notes/delete/{id}")

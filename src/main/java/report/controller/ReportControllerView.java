@@ -108,7 +108,9 @@ public class ReportControllerView {
     public String getPatientNotes(@PathVariable String id, Model model) {
         log.info("Request GET : /view/notes/" + id);
         List<Note> notes = reportService.getPatientNotes(id);
+        Patient patient = reportService.getPatient(id);
         model.addAttribute("notes", notes);
+        model.addAttribute("patient", patient);
         log.info("Response for /view/notes/" + id + ": " + reportService.getPatient(id).getFirstName() + " " + reportService.getPatient(id).getLastName());
         return "note/show";
     }
@@ -117,7 +119,9 @@ public class ReportControllerView {
     public String showAddNote(@PathVariable(value = "id") String patientId, Model model){
         log.info("Request GET : /view/notes/add/" + patientId);
         Note note = new Note(patientId);
+        Patient patient = reportService.getPatient(patientId);
         model.addAttribute("note", note);
+        model.addAttribute("patient", patient);
         log.info("Response for /view/notes/add/" + patientId + ": OK");
         return "note/add";
     }

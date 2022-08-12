@@ -1,0 +1,43 @@
+html
+{
+    height : 100%;
+}
+
+body
+{
+    height : 100%
+}
+
+#bandeau
+{
+    height : 15%;
+    position : relative;
+}
+
+#title
+{
+    height : 5%;
+    position : relative;
+    text-align : center;
+}
+
+#page
+{
+    height : 85%;
+    position : relative;
+    text-align : center;
+    margin : 20px;
+}
+
+#list_Note
+{
+    height : 70%;
+    position : relative;
+}
+
+#return
+{
+     height : 20%;
+     position : relative;
+     justify-content : space-around;
+}

@@ -2,25 +2,28 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Patient information</title>
+  <title>Report</title>
   <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/showReport.css">
 </head>
 
 <body>
-<div id="menu" th:replace="bandeau"></div>
+    <div id="menu" th:replace="bandeau"></div>
+    <div id="title">
+      <h2>Report for patient</h2>
+    </div>
 
-<h1>Rapport du patient :</h1>
+    <div id="page">
+        <div th:object="${report}">
+          <p>First Name : <span th:text="${report.patient.firstName}"></span></p>
+          <p>Last Name : <span th:text="${report.patient.lastName}"></span></p>
+          <p>Age : <span th:text="${report.age}"></span></p>
+          <p>Level risk : <span th:text="${report.level}"></span></p>
+        </div>
 
-<div th:object="${report}">
-  <p>First Name : <span th:text="${report.patient.firstName}"></span></p>
-  <p>Last Name : <span th:text="${report.patient.lastName}"></span></p>
-  <p>Age : <span th:text="${report.age}"></span></p>
-  <p>Level risk : <span th:text="${report.level}"></span></p>
-</div>
-
-<div class="row" id="retour">
-  <a th:href="@{/view/}"><button class="btn btn-primary">Retour</button></a>
-</div>
-
+        <div class="row" id="return">
+          <a th:href="@{/view/}"><button class="btn btn-primary">Return</button></a>
+        </div>
+    </div>
 </body>
 </html>

@@ -5,30 +5,38 @@
     <meta charset="UTF-8">
     <title>Add Note</title>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/addNote.css">
 </head>
 
 <body>
 <div id="menu" th:replace="bandeau"></div>
-<form method="post" th:action="@{/view/notes/add/{id}(id=${note.patientId})}" th:object="${note}">
-    <div class="patientId">
-        <p>Add recommendations for patient <th th:text="${note.patientId}"></th></p>
-    </div>
-    <label for="patientId">Patient Id : </label>
-    <input type="text" required="true" name="patientId" id="patientId"
-           th:value="${note.patientId}" th:placeholder="${note.patientId}" disabled/>
 
-
-    <div class="recommendations">
-        <label for="recommendations">Recommendations : </label>
-        <textarea type="text" required="true" name="recommendations" id="recommendations"
-               th:field="*{recommendations}" row="40" cols="50"/>
-        <p class="text-danger" th:if="${#fields.hasErrors('recommendations')}" th:errors="*{recommendations}"></p>
-    </div>
-    <div class="creation">
-        <button type="submit" class="btn btn-primary">Add</button>
-    </div>
-</form>
-
-<div class="row" id="Return">
-    <a th:href="@{/view/}"><button class="btn btn-primary">Return</button></a>
+<div id="title">
+    <h2>Add a note for patient <th th:text="${patient.firstName}"></th>  <th th:text="${patient.lastName}"></th></h2>
 </div>
+
+<div id="page">
+    <form id="form" method="post" th:action="@{/view/notes/add/{id}(id=${note.patientId})}" th:object="${note}">
+        <div>
+            <label for="patientId">Patient Id : </label>
+            <input type="text" required="true" name="patientId" id="patientId"
+                   th:value="${note.patientId}" th:placeholder="${note.patientId}" disabled/>
+        </div>
+
+        <div class="recommendations">
+            <label for="recommendations">Recommendations : </label>
+            <textarea type="text" required="true" name="recommendations" id="recommendations"
+                   th:field="*{recommendations}" row="40" cols="50"/>
+            <p class="text-danger" th:if="${#fields.hasErrors('recommendations')}" th:errors="*{recommendations}"></p>
+        </div>
+        <div class="creation">
+            <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+    </form>
+
+    <div class="row" id="return">
+        <a th:href="@{/view/}"><button class="btn btn-primary">Return</button></a>
+    </div>
+</div>
+</body>
+</html>

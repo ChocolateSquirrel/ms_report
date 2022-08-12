@@ -5,31 +5,32 @@
     <meta charset="UTF-8">
     <title>Add Note</title>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/updateNote.css">
 </head>
 
 <body>
 <div id="menu" th:replace="bandeau"></div>
-<form method="post" th:action="@{/view/notes/update/{id}(id=${note.id})}" th:object="${note}">
-    <div class="patientId">
-        <label for="patientId">Patient Id : </label>
-        <input type="text" required="true" name="patientId" id="patientId"
-               th:field="*{patientId}"/>
-        <p class="text-danger" th:if="${#fields.hasErrors('patientId')}" th:errors="*{patientId}"></p>
-    </div>
-    <div class="recommendations">
-        <label for="recommendations">Recommendations : </label>
-        <textarea type="text" required="true" name="recommendations" id="recommendations"
-               th:field="*{recommendations}" row="40" cols="50"/>
-        <p class="text-danger" th:if="${#fields.hasErrors('recommendations')}" th:errors="*{recommendations}"></p>
-    </div>
-    <div class="creation">
-        <button type="submit" class="btn btn-primary">Mise à jour de la note</button>
-    </div>
-</form>
+<div id="page">
+    <form id="form" method="post" th:action="@{/view/notes/update/{id}(id=${note.id})}" th:object="${note}">
+        <div class="patientId">
+            <label for="patientId">Patient Id : </label>
+            <input type="text" required="true" name="patientId" id="patientId"
+                   th:value="${note.patientId}" th:placeholder="${note.patientId}" disabled/>
+        </div>
+        <div class="recommendations">
+            <label for="recommendations">Recommendations : </label>
+            <textarea type="text" required="true" name="recommendations" id="recommendations"
+                   th:field="*{recommendations}" row="40" cols="50"/>
+            <p class="text-danger" th:if="${#fields.hasErrors('recommendations')}" th:errors="*{recommendations}"></p>
+        </div>
+        <div class="creation">
+            <button type="submit" class="btn btn-primary">Update note</button>
+        </div>
+    </form>
 
-<div class="row" id="Return">
-    <a th:href="@{/view/}"><button class="btn btn-primary">Return</button></a>
+    <div class="row" id="Return">
+        <a th:href="@{/view/}"><button class="btn btn-primary">Return</button></a>
+    </div>
 </div>
-
 </body>
 </html>

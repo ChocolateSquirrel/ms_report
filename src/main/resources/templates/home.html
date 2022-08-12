@@ -5,11 +5,14 @@
     <meta charset="UTF-8">
     <title>Mediscreen</title>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/home.css">
 </head>
 
 <body>
+
     <div id="menu" th:replace="bandeau"></div>
 
+    <div class="container" id="page">
     <div class="row" id="add_Patient">
         <a th:href="@{/view/patients/add}"><button class="btn btn-primary">Add patient</button></a>
     </div>
@@ -17,7 +20,7 @@
     <div class="row" id="list_Patient">
         <table class="table table-bordered">
             <thead>
-            <tr>
+            <tr style="text-align:center">
                 <th>FirstName</th>
                 <th>LastName</th>
                 <th>Info</th>
@@ -31,8 +34,8 @@
                 <td>No patient</td>
             </tr>
             <tr th:each="patient : ${patients}">
-                <th th:text="${patient.firstName}"></th>
-                <th th:text="${patient.lastName}"></th>
+                <th th:text="${patient.firstName}" style="font-weight:lighter"></th>
+                <th th:text="${patient.lastName}" style="font-weight:lighter"></th>
                 <td style="width: 30%" class="text-center">
                     <a th:href="@{/view/patients/{id}(id=${patient.patientId})}">Show</a>&nbsp;|&nbsp;
                     <a th:href="@{/view/patients/update/{id}(id=${patient.patientId})}">Edit</a>
@@ -50,6 +53,7 @@
             </tr>
             </tbody>
         </table>
+    </div>
     </div>
 </body>
 </html>

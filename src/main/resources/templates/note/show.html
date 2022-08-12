@@ -5,18 +5,20 @@
     <meta charset="UTF-8">
     <title>Note list</title>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/showNote.css">
 </head>
 
 <body>
 <div id="menu" th:replace="bandeau"></div>
-
+<div id="title"><h2>Notes corresponding to: <span th:text="${patient.firstName}"/> <span th:text="${patient.lastName}"/></h2></div>
+<div id="page">
 <div class="row" id="list_Note">
     <table class="table table-bordered">
         <thead>
         <tr>
             <th>PatientId</th>
             <th>Recommendations</th>
-            <th>Action</th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -24,8 +26,8 @@
             <td>No note for this patient</td>
         </tr>
         <tr th:each="note : ${notes}">
-            <th th:text="${note.patientId}"></th>
-            <th th:text="${note.recommendations}"></th>
+            <th th:text="${note.patientId}" style="font-weight:lighter"></th>
+            <th th:text="${note.recommendations}" style="font-weight:lighter; text-align:left"></th>
             <td style="width: 15%" class="text-center">
                 <a th:href="@{/view/notes/update/{id}(id=${note.id})}">Edit</a>&nbsp;|
                 <a th:href="@{/view/notes/delete/{id}(id=${note.id})}">Delete</a>
@@ -35,8 +37,9 @@
     </table>
 </div>
 
-<div class="row" id="retour">
-    <a th:href="@{/view/}"><button class="btn btn-primary">Retour</button></a>
+<div class="row" id="return">
+    <a th:href="@{/view/}"><button class="btn btn-primary">Return</button></a>
+</div>
 </div>
 </body>
 </html>

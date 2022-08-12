@@ -1,0 +1,33 @@
+html
+{
+    height : 100%;
+}
+
+body
+{
+    height : 100%
+}
+
+#bandeau
+{
+    height : 15%;
+    position : relative;
+}
+
+#page
+{
+    height : 85%;
+    position : relative;
+}
+
+#add_Patient
+{
+    height : 10%;
+    position : relative;
+}
+
+#list_Patient
+{
+    height : 70%;
+    position : relative;
+}

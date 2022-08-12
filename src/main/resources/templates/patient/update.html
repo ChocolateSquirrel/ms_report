@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Mise à jour des informations du patient</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/updatePatient.css">
 </head>
 
 <body>
 <div id="menu" th:replace="bandeau"></div>
-<h2>Mise à jour des informations pour le patient avec pour id : <span th:text="${patient.patientId}"></span></h2>
-<form method="post"  th:action="@{/view/patients/update/{id}(id=${patient.patientId})}" th:object="${patient}">
+<div id="title">
+    <h2>Update informations for: <span th:text="${patient.firstName}"/> <span th:text="${patient.lastName}"/></h2>
+</div>
+
+<div id="page">
+<form id="form" method="post" th:action="@{/view/patients/update/{id}(id=${patient.patientId})}" th:object="${patient}">
     <div class="nom">
         <label for="lastName">Last Name : </label>
         <input type="text" required="true" name="lastName" id="lastName"
@@ -48,8 +54,12 @@
         <p class="text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
     </div>
     <div class="creation">
-        <button type="submit" class="btn btn-primary">Mise à jour des informations</button>
+        <button type="submit" class="btn btn-primary">Update</button>
     </div>
 </form>
+    <div id="return" style="margin:auto">
+        <a th:href="@{/view/}"><button class="btn btn-primary">Return</button></a>
+    </div>
+</div>
 </body>
 </html>

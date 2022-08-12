@@ -38,6 +38,8 @@ public class ReportService {
     }
 
     public Patient deletePatient(String id){
+        List<Note> notes = noteProxy.getPatientNotes(id);
+        notes.forEach(n -> noteProxy.deleteNote(n.getId()));
         return patientProxy.delete(Integer.parseInt(id));
     }
 

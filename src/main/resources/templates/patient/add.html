@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Ajout patient</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/addPatient.css">
 </head>
 
 <body>
 <div id="menu" th:replace="bandeau"></div>
-<h2>Ajout d'un patient</span></h2>
-<form method="post"  th:action="@{/view/patients/add/}" th:object="${patient}">
+
+<div id="title"><h2>Add a patient</span></h2></div>
+
+<div id="page">
+<form id="form" method="post"  th:action="@{/view/patients/add/}" th:object="${patient}">
     <div class="nom">
         <label for="lastName">Last Name : </label>
         <input type="text" required="true" name="lastName" id="lastName"
@@ -47,12 +52,15 @@
         <input type="text" name="phone" id="phone" th:field="*{phone}"/>
         <p class="text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
     </div>
-    <div class="creation">
+
+    <div id="creation">
         <button type="submit" class="btn btn-primary">Add</button>
     </div>
 </form>
-<div class="row" id="Return">
-    <a th:href="@{/view/}"><button class="btn btn-primary">Return</button></a>
+    <div id="return" style="margin:auto">
+        <a th:href="@{/view/}"><button class="btn btn-primary">Return</button></a>
+    </div>
 </div>
+
 </body>
 </html>
