@@ -1,4 +1,4 @@
-package report.model;
+package com.mediscreen.ms_report.model;
 
 public enum Sex {
     MALE("M"),

@@ -1,13 +1,13 @@
-package report.controller;
+package com.mediscreen.ms_report.controller;
 
+import com.mediscreen.ms_report.model.Note;
+import com.mediscreen.ms_report.model.Patient;
+import com.mediscreen.ms_report.model.Report;
+import com.mediscreen.ms_report.service.ReportService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import report.model.Note;
-import report.model.Patient;
-import report.model.Report;
-import report.service.ReportService;
 
 import java.util.List;
 

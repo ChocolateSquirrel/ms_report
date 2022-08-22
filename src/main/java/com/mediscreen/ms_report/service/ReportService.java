@@ -1,14 +1,13 @@
-package report.service;
+package com.mediscreen.ms_report.service;
 
+import com.mediscreen.ms_report.model.*;
+import com.mediscreen.ms_report.proxy.NoteProxy;
+import com.mediscreen.ms_report.proxy.PatientProxy;
 import org.springframework.stereotype.Service;
-import report.model.*;
-import report.proxy.NoteProxy;
-import report.proxy.PatientProxy;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
 public class ReportService {

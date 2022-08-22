@@ -1,14 +1,14 @@
-package report.controller;
+package com.mediscreen.ms_report.controller;
 
+import com.mediscreen.ms_report.model.Note;
+import com.mediscreen.ms_report.model.Patient;
+import com.mediscreen.ms_report.model.Report;
+import com.mediscreen.ms_report.service.ReportService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import report.model.Note;
-import report.model.Patient;
-import report.model.Report;
-import report.service.ReportService;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -131,7 +131,9 @@ public class ReportControllerView {
         log.info("Request POST : /view/notes/add");
         if (!result.hasErrors()){
             Note noteAdded = reportService.addNote(patientId, note.getRecommendations());
+            Patient patient = reportService.getPatient(patientId);
             List<Note> notes = reportService.getPatientNotes(patientId);
+            model.addAttribute("patient", patient);
             model.addAttribute("notes", notes);
             return "note/show";
         }

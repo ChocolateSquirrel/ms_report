@@ -1,4 +1,4 @@
-package report.model;
+package com.mediscreen.ms_report.model;
 
 public enum Trigger {
     HEMOGLOBINE("hemoglobine A1C", "hemoglobin A1C"),

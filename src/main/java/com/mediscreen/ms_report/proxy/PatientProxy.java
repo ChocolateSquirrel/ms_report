@@ -1,8 +1,8 @@
-package report.proxy;
+package com.mediscreen.ms_report.proxy;
 
+import com.mediscreen.ms_report.model.Patient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
-import report.model.Patient;
 
 import java.util.List;
 
