@@ -1,0 +1,57 @@
+version: '3'
+
+services:
+      ms-report:
+        image: ms_report
+        hostname: ms-report
+        depends_on:
+          - mongo
+        ports:
+          - 8080:8080
+        restart: always
+
+      ms-note:
+        image: ms_note
+        depends_on:
+          - mongo
+        hostname: ms-note
+        ports:
+          - 8082:8082
+        restart: always
+
+
+      ms-patient:
+        image: ms_patient
+        depends_on:
+          - postgres
+          - adminer
+        hostname: ms-patient
+        ports:
+          - 8081:8081
+
+
+      postgres:
+        image: postgres
+        hostname: postgres_db
+        container_name: postgres_db
+        ports:
+          - 5432:5432
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: utilisateur+
+          POSTGRES_DB: mediscreen_db
+
+      adminer:
+        image: adminer
+        ports:
+          - 8083:8080
+        restart: always
+
+
+      mongo:
+        image: ms_mongo
+        hostname: mongo_db
+        ports:
+          - 27018:27017
+        restart: always
+

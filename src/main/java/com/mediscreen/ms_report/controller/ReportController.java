@@ -23,13 +23,11 @@ public class ReportController {
 
     @GetMapping("/patients/list")
     public List<Patient> getAllPatients(){
-        System.out.println("Cocuocu");
         return reportService.getAllPatients();
     }
 
     @GetMapping("/notes/list")
     public List<Note> getAllNotes(){
-        System.out.println("Cocuocu");
         return reportService.getAllNotes();
     }
 

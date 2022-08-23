@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient (name = "ms-patient", url = "localhost:8081")
+@FeignClient (name = "ms-patient", url = "ms-patient:8081")
 public interface PatientProxy {
 
     @RequestMapping("/api/patients/")
