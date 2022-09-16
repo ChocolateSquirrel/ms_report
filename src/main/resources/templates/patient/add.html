@@ -35,7 +35,7 @@
     <div class="sexe">
         <label for="sex">Sex : </label>
         <select id="sex" name="sex" th:field="*{sex}">
-            <option th:each="s : ${T(report.model.Sex).values()}"
+            <option th:each="s : ${T(com.mediscreen.ms_report.model.Sex).values()}"
                     th:value="${s}"
                     th:text="${s.abbreviation}">
             </option>
