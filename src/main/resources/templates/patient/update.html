@@ -29,7 +29,7 @@
     </div>
     <div class="dateNaissance">
         <label for="dateOfBirth">Date of Birth : </label>
-        <input type="text"
+        <input type="text" pattern="^[0-9]{4}-(((0[13578]|(10|12))-(0[1-9]|[1-2][0-9]|3[0-1]))|(02-(0[1-9]|[1-2][0-9]))|((0[469]|11)-(0[1-9]|[1-2][0-9]|30)))$"
                required="true" name="dateOfBirth" id="dateOfBirth"  th:field="*{dateOfBirth}"/>
         <p class="text-danger" th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}"></p>
     </div>
