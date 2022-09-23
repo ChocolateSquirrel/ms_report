@@ -1,4 +1,4 @@
-#Mediscreen
+# Mediscreen  
 Mediscreen is an application used by doctors to detect patients at risk of developing diabetes.  
 From some information (like age, sex...) and the historic (notes) of the patient, this application can generate 
 a report. 4 risk levels are used:
@@ -10,13 +10,13 @@ a report. 4 risk levels are used:
 ms_report is the main microservice of Mediscreen application.  
 
 --------------------------------------------------------
-###Technologies :
+### Technologies :
 * Java 8
 * Maven
 * Spring Boot
 * Docker
 ------------------------
-###Architecture
+### Architecture
 Mediscreen uses 4 micro services :
 * ms_report (https://github.com/ChocolateSquirrel/ms_report/tree/dev)
 * ms_note (https://github.com/ChocolateSquirrel/ms_note/tree/dev)
@@ -27,7 +27,7 @@ Mediscreen uses 4 micro services :
   ![](graphique.png)
 
 --------------------------------
-###Deployment with Docker :
+### Deployment with Docker :
 * Build the 3 jar (ms_report, ms_note, ms_demography)
 * Create image for each micro service : 
   * ```docker build -t ms_patient``` 
