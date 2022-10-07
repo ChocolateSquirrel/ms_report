@@ -85,19 +85,19 @@ public class ReportService {
     public LevelRisk getLevel(int age, long nbTriggers, Sex sex){
         LevelRisk level = LevelRisk.NONE;
 
-        if (nbTriggers == 2 && age > 30) level = LevelRisk.BORDERLINE;
+        if (nbTriggers >= 2 && age > 30) level = LevelRisk.BORDERLINE;
 
         // Case "in Danger"
         if (age < 30){
-            if (nbTriggers == 3 && sex.equals(Sex.MALE))  level = LevelRisk.IN_DANGER;
-            if (nbTriggers == 4 && sex.equals(Sex.FEMALE))  level = LevelRisk.IN_DANGER;
+            if (nbTriggers >= 3 && sex.equals(Sex.MALE))  level = LevelRisk.IN_DANGER;
+            if (nbTriggers >= 4 && sex.equals(Sex.FEMALE))  level = LevelRisk.IN_DANGER;
         }
-        if (age > 30 && nbTriggers == 6)  level = LevelRisk.IN_DANGER;
+        if (age > 30 && nbTriggers >= 6)  level = LevelRisk.IN_DANGER;
 
         // Case "Early onset"
         if (age < 30){
-            if (nbTriggers == 5 && sex.equals(Sex.MALE))  level = LevelRisk.EARLY_ONSET;
-            if (nbTriggers == 7 && sex.equals(Sex.FEMALE))  level = LevelRisk.EARLY_ONSET;
+            if (nbTriggers >= 5 && sex.equals(Sex.MALE))  level = LevelRisk.EARLY_ONSET;
+            if (nbTriggers >= 7 && sex.equals(Sex.FEMALE))  level = LevelRisk.EARLY_ONSET;
         }
         if (age > 30 && nbTriggers >= 8)  level = LevelRisk.EARLY_ONSET;
 

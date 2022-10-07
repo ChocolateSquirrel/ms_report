@@ -1,12 +1,13 @@
 package com.mediscreen.ms_report.model;
 
 public enum Trigger {
-    HEMOGLOBINE("hemoglobine A1C", "hemoglobin A1C"),
+    HEMOGLOBINE("hémoglobine a1c", "hemoglobin a1c"),
     MICROALBUMINE("microalbumine", "microalbumin"),
     TAILLE("taille", "height"),
     POIDS("poids", "weight"),
-    FUMEUR("fumeur", "smoker"),
+    FUMEUR("fume", "smoker"),
     ANORMAL("anormal", "abnormal"),
+    ANORMALS("anormaux", "abnormals"),
     CHOLESTEROL("cholestérol", "cholesterol"),
     VERTIGE("vertige", "dizziness"),
     RECHUTE("rechute", "relapse"),
